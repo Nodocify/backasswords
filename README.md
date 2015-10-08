@@ -11,7 +11,8 @@ I converted it to Python 3 and to take input from a file.
 ```
 usage: backasswords.py [-h] [-o] [-e] [-b] [-k LENGTH] [--output OUTFILE] infile
 
-Backasswords, an obfuscation script that will hide your plain text without changing the functionality.
+Backasswords, an obfuscation script that will hide your plain text without 
+changing the functionality.
 
 positional arguments:
 infile                Input python file to be obfuscated.
@@ -23,6 +24,7 @@ optional arguments:
 -b, --bitshift        Enable bitshift obfuscation, Implies obfuscation
                       (WARNING: Takes a very long time to generate)
 -k LENGTH, --key LENGTH
-                      Specify encryption key length, default = 5, Irrelevant if encryption is not in use.
+                      Specify encryption key length, default = 5, Irrelevant 
+                      if encryption is not in use.
 --output OUTFILE      Specify output file. If not given writes to stdout.
 ```
