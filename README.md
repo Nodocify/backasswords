@@ -8,6 +8,7 @@ I converted it to Python 3 and to take input from a file.
 *Python 3+
 
 ##Usage
+```
 usage: backasswords.py [-h] [-o] [-e] [-b] [-k LENGTH] [--output OUTFILE] infile
 
 Backasswords, an obfuscation script that will hide your plain text without changing the functionality.
@@ -24,3 +25,4 @@ optional arguments:
 -k LENGTH, --key LENGTH
                       Specify encryption key length, default = 5, Irrelevant if encryption is not in use.
 --output OUTFILE      Specify output file. If not given writes to stdout.
+```
