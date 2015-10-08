@@ -9,7 +9,7 @@ I converted it to Python 3 and to take input from a file.
 
 ##Usage
 ```
-usage: backasswords.py [-h] [-o] [-e] [-b] [-k LENGTH] [--output OUTFILE] infile
+usage: backasswords.py [-h] [-o] [-e] [-b] [-k LENGTH] [-s] [--output OUTFILE] infile
 
 Backasswords, an obfuscation script that will hide your plain text without 
 changing the functionality.
