@@ -167,7 +167,7 @@ if __name__ == '__main__':
     r = parser.parse_args()
     with open(r.infile, 'r') as f:
         data = f.read()
-    y = backasswords(data, key_length=r.length, bit_shift=r.b, obfuscate=r.o, encrypt=r.e)
+    y = backasswords(data, key_length=r.length, bit_shift=r.bitshift, obfuscate=r.obfuscate, encrypt=r.encrypt)
     fin = y.run()
     if r.outfile:
         with open(r.outfile, 'w') as f:
