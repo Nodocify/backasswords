@@ -15,17 +15,20 @@ GNU General Public License for more details.
 """
 
 class backasswords(object):
-    def __init__(self, s, key_length=5, bit_shift=False, obfuscate=True, encrypt=True):
+    def __init__(self, s, key_length=5, bit_shift=False, obfuscate=True, encrypt=True, single=False):
         import os
         self.s = s
         self.key_length = key_length
         self.bit_shift = bit_shift
         self.encrypt = encrypt
         self.obfuscate = obfuscate
+        self.single = single
         self.check_opts()
 
     def check_opts(self):
         if self.bit_shift:
+            self.obfuscate = True
+        if self.single:
             self.obfuscate = True
 
     def run(self):
@@ -38,6 +41,8 @@ class backasswords(object):
                 self.s = self.gen_str(con)
             else:
                 self.s = self.gen_str(str(num))
+            if self.single:
+                self.s = self.gen_single(self.s)
         return self.s
 
     def gen_enc(self, s, key_length):
@@ -49,6 +54,9 @@ class backasswords(object):
         for i in range(len(data)):
             data[i] ^= int(next(x), 16)
         return data
+
+    def gen_single(self, s):
+        return ' '.join([y.strip() for y in s.strip().split('\n')])
 
     def gen_brute_wrapper(self, s, key_length):
         return """____ = %s
@@ -157,6 +165,10 @@ if __name__ == '__main__':
                         default=5,
                         dest='length',
                         help='Specify encryption key length, default = 5, Irrelevant if encryption is not in use.')
+    parser.add_argument('-s', '--single',
+                        action="store_true",
+                        default=False,
+                        help='Return output on a single line.')
     parser.add_argument('--output', action="store",
                         default=None,
                         dest='outfile',
@@ -167,7 +179,7 @@ if __name__ == '__main__':
     r = parser.parse_args()
     with open(r.infile, 'r') as f:
         data = f.read()
-    y = backasswords(data, key_length=r.length, bit_shift=r.bitshift, obfuscate=r.obfuscate, encrypt=r.encrypt)
+    y = backasswords(data, key_length=r.length, bit_shift=r.bitshift, obfuscate=r.obfuscate, encrypt=r.encrypt, single=r.single)
     fin = y.run()
     if r.outfile:
         with open(r.outfile, 'w') as f:
