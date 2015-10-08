@@ -26,5 +26,6 @@ optional arguments:
 -k LENGTH, --key LENGTH
                       Specify encryption key length, default = 5, Irrelevant 
                       if encryption is not in use.
+-s, --single          Return output on a single line.
 --output OUTFILE      Specify output file. If not given writes to stdout.
 ```
